@@ -1,0 +1,25 @@
+ .today_ratio,
+     .month_ratio {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font: 700 14px "나눔고딕";
+        color: #FAFAFA;
+        gap: 4px;
+    }
+
+    .updown_icon {
+        display: flex;
+    }
+    .updown_icon img {
+        display: block;
+    }
+    .updown_font {
+        display: flex;
+    }
+    .updown_font div {
+        display: flex;
+    }
+
+
+    

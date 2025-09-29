@@ -4,7 +4,7 @@ import "./App.css";
 import Overview from "./page/Overview";
 import Monitoring from "./page/Monitoring";
 import Condition from "./page/Condition/Condition";
-import Analysis from "./page/Analysis";
+import Analysis from "./page/Analysis/Analysis";
 import Emission from "./page/Emission";
 
 function App() {
