@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./css/overview.css";
+import "./css/monitoring.css";
 import Overview from "./page/Overview";
 import Monitoring from "./page/Monitoring";
 import Condition from "./page/Condition";
