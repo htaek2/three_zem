@@ -1,74 +1,204 @@
- :root{
-          --g:16px;                 /* ✅ 공통 간격(가터) */
-          --title-gap:25px;         /* ✅ 상단바↔제목, 제목↔히어로 '같은 간격' */
-          --title-h:32px;           /* ✅ 제목 높이(한 줄 고정) = 32px */
-          --tile-bg:#09131A;        /* 카드/타일 배경 (하단 버튼과 동일 톤) */
-          --tile-border:#1D282F;    /* 카드/타일 스트로크 1px */
-          --text:#FAFAFA;           /* 텍스트 색 */
-          --header-h:50px;          /* 프레임 상단바 높이 */
-          --footer-h:60px;          /* 프레임 하단바 높이 */
-          --bottom-cards-h:150px;   /* 하단 3박스 높이 */
-        }
+/* ===== 디자인 토큰 ===== */
+:root{
+  --g:16px;               /* 공통 간격 */
+  --title-gap:25px;       /* 제목 위/아래 */
+  --title-h:32px;         /* 제목 높이 */
+  --tile-bg:#09131A;      /* 타일 배경 */
+  --tile-border:#1D282F;  /* 타일 경계 */
+  --text:#FAFAFA;         /* 텍스트 */
+  --header-h:50px;        /* 헤더 높이 */
+  --footer-h:60px;        /* 푸터 높이 */
+  --bottom-cards-h:150px; /* (데스크톱) A/B/C 한 줄 높이 */
+  --hero-gap:16px;        /* 히어로와 A/B/C 사이 여백 */
+  --chip-gap:18px;
 
-        body{ background:#040B12; color:var(--text); } /* 페이지 배경/글자색 */
+  /* (모바일 전용) 카드 스택 계산 */
+  --cards-count: 3; /* A/B/C = 3장 */
+  --mobile-cards-h: calc(
+    var(--bottom-cards-h) * var(--cards-count) + var(--g) * (var(--cards-count) - 1)
+  );
+}
 
-        /* 큰 화면에서 스크롤 없도록: main에 별도 min-height/padding-bottom 안 줌 (프레임의 padding-top/bottom만 사용) */
-        main.page{ /* 비워둠으로써 calc 기반 히어로가 화면을 꽉 채움 */ }
+/* 데스크톱(1920×1080 등)에서는 문서 스크롤 제거, 히어로 내부만 스크롤 */
+@media (min-width:1200px){
+  html, body { height:100%; overflow:hidden; }
+}
 
-        /* ===== 제목: 상단바와 히어로 사이 간격 '동일' (x:18 고정) ===== */
-        main.page > .page-title{
-          font-family:"Nanum Gothic","나눔고딕",sans-serif; /* 나눔고딕 */
-          font-weight:800;                 /* ExtraBold */
-          font-size:32px;                  /* 32px */
-          line-height:32px;                /* ✅ 높이를 32px로 고정(계산 편의) */
-          margin-top:var(--title-gap);     /* ✅ 상단바(50) 아래로 25px */
-          margin-bottom:var(--title-gap);  /* ✅ 히어로 위로도 25px → 위/아래 동일 간격 */
-          margin-left:18px;                /* ✅ x=18 */
-          margin-right:0;                  /* 우측은 자유 */
-          letter-spacing:0;                /* 자간 고정 */
-        }
+/* 모니터링 페이지 공통 배경/텍스트색 */
+.monitoring-page { background:#040B12; color:var(--text); }
 
-        /* ===== 상단 큰 라운드 박스(히어로) =====
-           - 좌우 16px
-           - 아래(하단 3박스의 top)와 16px 간격 유지
-           - 높이: '보이는 남는 공간'을 꽉 채우도록 calc
-              = 100vh
-                - 헤더(50)
-                - 푸터(60)
-                - 하단3박스(150)
-                - 하단3박스와의 간격 16
-                - 제목 위/아래 간격 25*2
-                - 제목 높이 32
-        */
-        .hero-card{
-          margin:0 var(--g) var(--g);                           /* ✅ 좌우 16px, 아래 16px */
-          border-radius:14px;                                   /* 모서리 라운드 */
-          background:var(--tile-bg);                            /* 배경 */
-          border:1px solid var(--tile-border);                  /* 1px 스트로크 */
-          min-height:calc(100vh - var(--header-h) - var(--footer-h) - var(--bottom-cards-h)
-                          - var(--g) - (var(--title-gap) * 2) - var(--title-h)); /* ✅ 큰 화면에서 스크롤 없이 딱 맞춤 */
-          display:flex; align-items:center; justify-content:center; /* 임시 중앙 정렬(컨텐츠 자리) */
-        }
+/* (선택) 모니터링 페이지만 풀블리드: 앱 레이아웃에 맞게 쓰는 옵션 */
+body[data-page="monitoring"] .container{
+  padding:0; min-height:0; height:auto;
+}
 
-        /* ===== 하단 3박스(푸터 위 16px 고정) ===== */
-        .bottom-cards{
-          position:fixed;                                       /* ✅ 항상 화면 하단 고정 */
-          left:var(--g); right:var(--g);                        /* ✅ 좌우 16px */
-          bottom:calc(var(--footer-h) + var(--g));              /* ✅ 푸터(60) 위로 16px */
-          display:grid; grid-template-columns:repeat(3, 1fr);   /* 3등분 */
-          gap:var(--g);                                         /* ✅ 카드 간 16px */
-          z-index:1500;                                         /* 푸터(2000) 아래, 본문 위 */
-          pointer-events:none;                                  /* 고정층이 클릭 막지 않게 */
-        }
-        .bottom-card{
-          height:var(--bottom-cards-h);                         /* ✅ 150px */
-          border-radius:14px;
-          background:var(--tile-bg);
-          border:1px solid var(--tile-border);
-          display:flex; align-items:center; justify-content:center;
-          pointer-events:auto;                                  /* 카드 자체는 클릭 가능 */
-        }
+/* ===== 레이아웃 핵심 수식 =====
+   reserve-h = (고정 하단 카드 높이) + (히어로-카드 간격 16) + (푸터 위 가터 16)
+   => 눈에 보이는 히어로↔카드 간격은 항상 16px이 됨. */
+.monitoring-page{
+  --reserve-h: calc(var(--bottom-cards-h) + var(--hero-gap) + var(--g)); /* 데스크톱 */
+}
 
-        /* (옵션) 좁은 화면 레이아웃 전환
-        @media (max-width:1400px){ .bottom-cards{ grid-template-columns:repeat(2,1fr);} }  */
-        @media (max-width:900px){  .bottom-cards{ grid-template-columns:1fr; } }
+/* 모바일: 접힘/펼침에 따라 예약값 변경 (data-open은 JSX에서 달아줌) */
+@media (max-width:900px){
+  /* 펼침: 스택 전체 높이 + 16 + 16 */
+  .monitoring-page[data-open="true"]{
+    --reserve-h: calc(var(--mobile-cards-h) + var(--hero-gap) + var(--g));
+  }
+  /* 접힘: 히어로 아래 16px만 확보 */
+  .monitoring-page[data-open="false"]{
+    --reserve-h: var(--hero-gap);
+  }
+}
+
+/* ===== 제목 ===== */
+.page-title{
+  font-family:"Nanum Gothic","나눔고딕",sans-serif;
+  font-weight:800; font-size:32px; line-height:32px; /* = var(--title-h) */
+  margin-top:var(--title-gap); margin-bottom:var(--title-gap);
+  margin-left: var(--g); /* 리듬 통일 (16px) */
+}
+
+/* ===== 히어로(상단 큰 박스) =====
+   - margin-bottom 대신 height에서 --reserve-h만큼 '컷'해서 겹침 방지 */
+.hero-card{
+  box-sizing:border-box;
+  margin:0 var(--g) 0 !important;
+  border-radius:14px; background:var(--tile-bg);
+  border:1px solid var(--tile-border);
+  display:flex; align-items:center; justify-content:center;
+
+  min-height:unset !important;
+  height:calc(
+    100vh - var(--header-h) - var(--footer-h)
+    - (var(--title-gap) * 2) - var(--title-h)
+    - var(--reserve-h)
+  ) !important;
+
+  overflow:auto; /* 문서 스크롤 없이 히어로 내부만 스크롤 */
+}
+
+/* 모바일 100vh 보정: 주소창 변동 대응 */
+@supports (height: 100dvh){
+  .hero-card{
+    height:calc(
+      100dvh - var(--header-h) - var(--footer-h)
+      - (var(--title-gap) * 2) - var(--title-h)
+      - var(--reserve-h)
+    ) !important;
+  }
+}
+
+/* ===== 히어로 아래 투명 스페이서 =====
+   - 눈에 보이는 히어로↔A/B/C 16px(또는 카드 높이+16px+16px)을 '실물'로 확보 */
+.layout-reserve{
+  height: var(--reserve-h) !important;
+  background: transparent;
+}
+
+/* ===== 하단 카드 컨테이너 ===== */
+.bottom-cards{
+  background: transparent !important; /* 컨테이너는 투명 */
+  border: 0 !important;
+  position:fixed;
+  left:var(--g); right:var(--g);
+  bottom: calc(var(--footer-h) + max(var(--g), env(safe-area-inset-bottom)));
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:var(--g);
+  z-index:1500;
+  pointer-events:none;               /* 컨테이너는 클릭 막고 */
+  height: var(--bottom-cards-h);     /* 데스크톱 한 줄 높이 */
+  transition: transform 200ms ease;
+  will-change: transform;            /* 성능 힌트 */
+}
+
+/* 개별 카드만 인터랙션 */
+.bottom-card{
+  position: relative; /* 칩 절대배치용 */
+  height:var(--bottom-cards-h);
+  border-radius:14px;
+  background:var(--tile-bg);
+  border:1px solid var(--tile-border);
+  display:flex; align-items:center; justify-content:center;
+  pointer-events:auto;
+  box-sizing:border-box; /* 1px 경계 포함 보정 */
+}
+
+.card-chip{
+  position:absolute;
+  top: var(--g);
+  left: var(--g);
+  width:122px;
+  height:50px;
+  border-radius:12px;                 /* 둥근 모서리 */
+  background: var(--tile-bg);         /* = #09131A (fill) */
+  border:1px solid var(--tile-border);/* = #1D282F (stroke 1px) */
+
+  display:flex; 
+  align-items:center;
+  gap: var(--chip-gap);
+  padding: 0 12px;                    /* 좌우 여백 */
+  box-sizing: border-box;
+}
+
+.chip-icon{
+  width:26px;
+  height:26px;
+  object-fit: contain;
+  display:block;
+}
+.chip-label{
+  font-family:"Nanum Gothic","나눔고딕",sans-serif;
+  font-weight:700;              /* Bold */
+  font-size:24px;
+  line-height:24px;             /* 수직 균형 */
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;      /* 혹시 길어질 때 대비 */
+}
+
+/* 데스크톱: 항상 보임 */
+@media (min-width:901px){
+  .bottom-cards{ transform:none !important; }
+  .cards-toggle{ display:none !important; }
+}
+
+/* 모바일: 세로 스택 + 완전 숨김/펼침 */
+@media (max-width:900px){
+  .bottom-cards{
+    grid-template-columns:1fr;
+    height: var(--mobile-cards-h); /* 총 3장 + 세로 간격 */
+  }
+  /* 펼침: 제자리 */
+  .bottom-cards[data-open="true"]{
+    transform: translateY(0);
+  }
+  /* 접힘: 전체가 화살표 아래로 완전히 숨김 */
+  .bottom-cards[data-open="false"]{
+    transform: translateY(calc(100% + max(var(--g), env(safe-area-inset-bottom))));
+  }
+
+  .cards-toggle{
+    display:grid; /* 모바일에서만 노출 */
+    position:fixed; left:50%; transform:translateX(-50%);
+    bottom: calc(var(--footer-h) + max(6px, env(safe-area-inset-bottom)));
+    width:44px; height:44px; border-radius:999px;
+    background:var(--tile-bg); border:1px solid var(--tile-border);
+    color:var(--text); font-weight:800; place-items:center;
+    z-index:1600; cursor:pointer;
+    touch-action: manipulation; /* 탭 반응성 향상 */
+  }
+}
+
+/* 스크린리더 전용 텍스트 유틸 */
+.visually-hidden{
+  position:absolute !important; width:1px; height:1px;
+  padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0);
+  white-space:nowrap; border:0;
+}
+
+/* 모션 민감 사용자 배려 */
+@media (prefers-reduced-motion: reduce){
+  .bottom-cards{ transition:none !important; }
+}
