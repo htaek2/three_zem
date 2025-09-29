@@ -3,7 +3,7 @@ import "./App.css";
 
 import Overview from "./page/Overview";
 import Monitoring from "./page/Monitoring";
-import Condition from "./page/Condition";
+import Condition from "./page/Condition/Condition";
 import Analysis from "./page/Analysis";
 import Emission from "./page/Emission";
 
