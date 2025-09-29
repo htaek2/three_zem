@@ -1,4 +1,7 @@
+import "../css/monitoring.css";
+
 function Monitoring() {
+  
   return <div>
     <main class="page">
     <h2 class="page-title">실시간 모니터링</h2>  
