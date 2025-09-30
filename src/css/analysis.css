@@ -490,11 +490,12 @@ width: 100%;
 .Monthly-usage-summary {
   width: 100%;
   display: flex;
+  flex-direction: column;
   gap: 18px;
 }
 
 .Monthly-usage-summary section {
-  height: 360px;
+  height: 100%;
   font-size: 14px;
   font-weight: bold;
 }
@@ -508,7 +509,7 @@ width: 100%;
 }
 
 .monthly-usage-summary-item {
-  width: calc((100% - 18px) / 2); /* 전체에서 gap 빼고 2등분 */
+ width: 100%;
   height: 200px;
   padding: 18px;
   box-sizing: border-box;
@@ -551,6 +552,17 @@ width: 100%;
   font-weight: 700;
   color: #ffffff;
 }
+
+.ranking_distribution > h3{
+ font-size: 20px;
+     color: #FFFFFF;
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 800;
+}
+
+
 
 .analysis_Right > h2 {
   font-size: 18px;
@@ -661,14 +673,6 @@ width: 100%;
   color : #FF00D4;
 
 }
-.ranking_distribution > h3{
- font-size: clamp(24px, 1.7vw, 32px);
-     color: #FFFFFF;
-    margin-top: 35px;
-    display: flex;
-    justify-content: space-evenly;
-    font-weight: 800;
-}
 
 
 
@@ -689,6 +693,233 @@ width: 100%;
 }
 
 /* 초소형 모바일 (360px 이하) */
-@media all and (max-width: 360px) {
+@media all and (max-width: 424px) {
+      .analysis_Main {
+ display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        max-width: 1888px;
+        height: 736px;
+        gap: 18px;
+        flex-direction: column;
+}
+
+.analysis_Main > div:first-child,
+.analysis_Main > div:nth-child(2) {
+width: 100%;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.analysis_Main > div:nth-child(2) {
+  padding: 18px;
+  background-color: #09131a;
+  border: 1px solid #1d282f;
+  height: 100%;
+}
+
+.Monthly-usage-summary {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.Monthly-usage-summary section {
+  height: 100%;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.monthly-usage-graph {
+  width: 100%;
+  height: 431px;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+}
+
+.monthly-usage-summary-item {
+ width: 100%;
+  height: 200px;
+  padding: 18px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #09131a;
+  border: 1px solid #1d282f;
+}
+
+.monthly-usage-summary-item h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.monthly-usage-summary-item h3 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #00aa6f;
+}
+
+.monthly-usage-graph {
+  width: 100%;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 18px auto;
+}
+
+.ranking_distribution {
+  width: 100%;
+  height: 360px;
+  background-color: #09131a;
+  border: 1px solid #1d282f;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.ranking_distribution > h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.ranking_distribution > h3{
+ font-size: 14px;
+     color: #FFFFFF;
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 800;
+}
+
+
+
+.analysis_Right > h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+.alert_banner1,
+.alert_banner2,
+.alert_banner3 {
+  border-radius: 10px;
+  height: 85px;
+  padding: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.alert_banner1 h3,
+.alert_banner2 h3,
+.alert_banner3 h3 {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.alert_banner1 span,
+.alert_banner2 span,
+.alert_banner3 span {
+  font-size: 10px;
+  color: #868686;
+}
+
+.alert_banner1 > div:nth-child(2),
+.alert_banner2 > div:nth-child(2),
+.alert_banner3 > div:nth-child(2) {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ===== 타입별 고유 스타일 (배경색/테두리만) ===== */
+.alert_banner1 {
+  background: #0f2b29;
+  border: 1px solid #106963;
+}
+
+.alert_banner2 {
+  background: #13243b;
+  border: 1px solid #154691;
+}
+
+.alert_banner3 {
+  background: rgba(251, 44, 54, 0.3);
+  border: 1px solid #fb2c36;
+}
+
+
+.ranking_distribution_graph{
+    width: 100%;
+    height: 160px;
+    margin-top: 18px;
+}
+
+
+.industry-comparison-container{
+    width: 90%;
+    height: 100%;
+   
+    margin: 0 auto;
+    border-radius: 10px;
+    display: flex;
+}
+
+
+.industry-comparison-bar {
+    width: 35%;
+    height: 100%;
+
+}
+.industry-benchmark-list {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+}
+
+.industry-benchmark-item {
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 800;
+    display: flex;
+    justify-content: space-around;
+}
+
+#industry_benchmark_value {
+    color : #00AA6F;
+}
+
+.highlight {
+  color : #FF00D4;
+
+}
+
+#industry_count {
+    color: #EF4444;
+}
+
+#industry_rate {
+    color: #FF9924;
+}
+
+#industry_message {
+    color: #FF9924;
+}
+
 }
 

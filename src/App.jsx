@@ -54,7 +54,9 @@ function App() {
             
             href="/overview"
             data-key="overview"
-            aria-label="개요"            
+            aria-label="개요" 
+            onClick={() => setCurrentPage("overview")}
+    
           >
             <div className="icon-wrapper">
               <img
@@ -73,6 +75,7 @@ function App() {
             href="/monitoring"
             data-key="monitoring"
             aria-label="모니터링"
+            onClick={() => setCurrentPage("monitoring")}
           >
             <div className="icon-wrapper">
               <img
@@ -91,6 +94,7 @@ function App() {
             href="/condition"
             data-key="condition"
             aria-label="에너지 현황"
+            onClick={() => setCurrentPage("condition")}
           >
             <div className="icon-wrapper">
               <img
@@ -109,6 +113,7 @@ function App() {
             href="/analysis"
             data-key="analysis"
             aria-label="통합 분석"
+            onClick={() => setCurrentPage("analysis")}
           >
             <div className="icon-wrapper">
               <img
@@ -127,6 +132,7 @@ function App() {
             href="/emission"
             data-key="emission"
             aria-label="탄소배출"
+            onClick={() => setCurrentPage("emission")}
           >
             <div className="icon-wrapper">
               <img
