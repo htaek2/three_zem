@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 function Energy({type = "elect", title = "전력", icon = "elect_icon.svg"}) {
     const explainFilter = type === "elect" ? "최고 사용량" : "시간당 최고 사용량";
     const unitFilter = type === "elect" ? "kWh" : "㎥";
@@ -9,6 +11,8 @@ function Energy({type = "elect", title = "전력", icon = "elect_icon.svg"}) {
         "circle" : "../public/condition_circle.svg"
     }
 
+    const detailOpen = useNavigate();
+
     return (
         <>
          <div className="energy">
@@ -18,7 +22,7 @@ function Energy({type = "elect", title = "전력", icon = "elect_icon.svg"}) {
                             <div id="energy_title"><img src={`../public/${icon}`} alt={title}></img>{title}</div>
                         </div>
                         <div className="energy_1usage_header_R">
-                            <img src= { icons["detail"] } alt="분석하기"></img>
+                            <img src= { icons["detail"] } alt="분석하기" onClick={()=>detailOpen("/detail")}/>
                         </div>
                     </div>
                     <div className="energy_1usage_main">
