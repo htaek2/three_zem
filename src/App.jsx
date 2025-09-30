@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import React, { useState, useEffect, use } from "react";
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
 
 import Overview from "./page/Overview";
@@ -10,6 +10,8 @@ import Analysis from "./page/Analysis/Analysis";
 import Emission from "./page/Emission";
 
 function App() {
+ 
+
   const [currentPage, setCurrentPage] = useState("overview");
 
   // body data-page 속성 설정 (기존 CSS 활성화 로직 유지)
