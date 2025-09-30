@@ -495,14 +495,14 @@ width: 100%;
 
 .Monthly-usage-summary section {
   height: 360px;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
 }
 
 .monthly-usage-graph {
   width: 100%;
   height: 431px;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
   border: 1px solid #ccc;
 }
@@ -518,13 +518,13 @@ width: 100%;
 }
 
 .monthly-usage-summary-item h2 {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   color: #ffffff;
 }
 
 .monthly-usage-summary-item h3 {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 800;
   color: #00aa6f;
 }
@@ -553,7 +553,7 @@ width: 100%;
 }
 
 .analysis_Right > h2 {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 18px;
@@ -573,7 +573,7 @@ width: 100%;
 .alert_banner1 h3,
 .alert_banner2 h3,
 .alert_banner3 h3 {
-  font-size: 20px;
+  font-size: 14px;
   color: #ffffff;
   font-weight: 700;
 }
@@ -581,7 +581,7 @@ width: 100%;
 .alert_banner1 span,
 .alert_banner2 span,
 .alert_banner3 span {
-  font-size: 16px;
+  font-size: 10px;
   color: #868686;
 }
 
@@ -643,7 +643,7 @@ width: 100%;
 }
 
 .industry-benchmark-item {
-    font-size: 22px;
+    font-size: 16px;
     color: #FFFFFF;
     margin-top: 8px;
     display: flex;
