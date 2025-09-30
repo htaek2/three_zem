@@ -45,12 +45,11 @@
     height: 100%;
     min-width: 343px;
     border-radius: 10px;
-    border: 1px solid #1A242B;
+    border: 1px solid #1D282F;
     background: #09131A;
     color: #FAFAFA;
     padding: 16px;
 }
-
 /* ⭐ 컨테이너 헤더 ⭐ */
 .energy_1usage,
  .energy_30usage,
@@ -71,7 +70,7 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
-    border: 1px solid #1A242B;
+    border: 1px solid #1D282F;
     width: 122px;
     height: 50px;
     flex-shrink: 0;
@@ -258,7 +257,7 @@
 /* 선 긋기 */
 .liner {
     border: 0;
-    border-top: 2px solid #1A242B; /* 선 굵기/색상 */
+    border-top: 2px solid #1D282F; /* 선 굵기/색상 */
     width: calc(100% + 32px);   /* 좌우 padding 16px * 2 = 32px */
     margin: 16px -16px;
     height: 0;                   /* 높이 제거 */
