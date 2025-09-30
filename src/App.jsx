@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 
 import Overview from "./page/Overview";
 import Monitoring from "./page/Monitoring";
 import Condition from "./page/Condition/Condition";
+import Condition_Detail from "./page/Condition_Detail";
 import Analysis from "./page/Analysis/Analysis";
 import Emission from "./page/Emission";
 
@@ -16,30 +18,10 @@ function App() {
     document.title = "BEMS - 모니터링";
   }, [currentPage]);
 
-  const handleNavClick = (page, event) => {
-    event.preventDefault();
-    setCurrentPage(page);
-  };
 
-  const renderCurrentPage = () => {
-    switch (currentPage) {
-      case "overview":
-        return <Overview />;
-      case "monitoring":
-        return <Monitoring />;
-      case "condition":
-        return <Condition />;
-      case "analysis":
-        return <Analysis />;
-      case "emission":
-        return <Emission />;
-      default:
-        return <Overview />;
-    }
-  };
 
   return (
-    <>
+    <Router>
       {/* 상단 고정 바 */}
       <header className="main-header" role="banner" aria-label="상단 바">
         <img src="./public/main_icon.svg" alt="메인 아이콘" className="logo" />
@@ -47,7 +29,17 @@ function App() {
       </header>
 
       {/* 컨텐츠 컨테이너 */}
-      <div className="container">{renderCurrentPage()}</div>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Overview />} />
+          <Route path="/overview" element={<Overview />} />
+          <Route path="/monitoring" element={<Monitoring />} />
+          <Route path="/condition" element={<Condition />} />
+          <Route path="/condition/detail" element={<Condition_Detail />} />
+          <Route path="/analysis" element={<Analysis />} />
+          <Route path="/emission" element={<Emission />} />
+        </Routes>
+      </div>
 
       {/* 하단 고정 네비 */}
       <footer
@@ -56,12 +48,13 @@ function App() {
         aria-label="하단 네비게이션"
       >
         <nav className="bottom-nav">
-          <a
-            href="/overview"
+          <Link
+            to="/overview"
             className="nav-button"
+            
+            href="/overview"
             data-key="overview"
-            aria-label="개요"
-            onClick={(e) => handleNavClick("overview", e)}
+            aria-label="개요"            
           >
             <div className="icon-wrapper">
               <img
@@ -71,14 +64,15 @@ function App() {
               />
               <span className="nav-label">개요</span>
             </div>
-          </a>
+          </Link>
 
-          <a
-            href="/monitoring"
+          <Link
+            to="/monitoring"
             className="nav-button"
+            
+            href="/monitoring"
             data-key="monitoring"
             aria-label="모니터링"
-            onClick={(e) => handleNavClick("monitoring", e)}
           >
             <div className="icon-wrapper">
               <img
@@ -88,14 +82,15 @@ function App() {
               />
               <span className="nav-label">모니터링</span>
             </div>
-          </a>
+          </Link>
 
-          <a
-            href="/condition"
+          <Link
+            to="/condition"
             className="nav-button"
+            
+            href="/condition"
             data-key="condition"
             aria-label="에너지 현황"
-            onClick={(e) => handleNavClick("condition", e)}
           >
             <div className="icon-wrapper">
               <img
@@ -105,14 +100,15 @@ function App() {
               />
               <span className="nav-label">에너지 현황</span>
             </div>
-          </a>
+          </Link>
 
-          <a
-            href="/analysis"
+          <Link
+            to="/analysis"
             className="nav-button"
+            
+            href="/analysis"
             data-key="analysis"
             aria-label="통합 분석"
-            onClick={(e) => handleNavClick("analysis", e)}
           >
             <div className="icon-wrapper">
               <img
@@ -122,14 +118,15 @@ function App() {
               />
               <span className="nav-label">통합 분석</span>
             </div>
-          </a>
+          </Link>
 
-          <a
-            href="/emission"
+          <Link
+            to="/emission"
             className="nav-button"
+
+            href="/emission"
             data-key="emission"
             aria-label="탄소배출"
-            onClick={(e) => handleNavClick("emission", e)}
           >
             <div className="icon-wrapper">
               <img
@@ -139,10 +136,10 @@ function App() {
               />
               <span className="nav-label">탄소배출</span>
             </div>
-          </a>
+          </Link>
         </nav>
       </footer>
-    </>
+    </Router>
   );
 }
 

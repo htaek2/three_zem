@@ -22,7 +22,7 @@ function Energy({type = "elect", title = "전력", icon = "elect_icon.svg"}) {
                             <div id="energy_title"><img src={`../public/${icon}`} alt={title}></img>{title}</div>
                         </div>
                         <div className="energy_1usage_header_R">
-                            <img src= { icons["detail"] } alt="분석하기" onClick={()=>detailOpen("/detail")}/>
+                            <img src= { icons["detail"] } alt="분석하기" onClick={()=>detailOpen("/condition/detail")}/>
                         </div>
                     </div>
                     <div className="energy_1usage_main">

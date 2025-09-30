@@ -7,14 +7,10 @@ import Condition_Detail from "../Condition_Detail";
 
 function Condition() {
   return (
-  <Router>
-    <Routes>
-      <Route path="/" 
-      element={
     <>
       <div className="title">에너지 현황</div>
           <div className="main">
-            <Energy type="elect" title="전력" icon="elect_icon.svg" />
+            <Energy type="elect" title="전력" icon="elect_icon.svg"  />
             <Energy type="gas" title="가스" icon="gas_icon.svg" />
             <Energy type="water" title="수도" icon="water_icon.svg" />
 
@@ -70,11 +66,6 @@ function Condition() {
               </div>
           </div>
     </>
-    } />
-
-      <Route path="/detail" element={<Condition_Detail />} />
-    </Routes>
-  </Router>
   );
 }
 export default Condition;
