@@ -2,12 +2,13 @@ import React from "react";
 import "../../css/analysis.css";
 import SummaryCard from "./SummaryCard";
 import AlertBanner from "./AlertBanner";
+import BenchMarkItem from "./BenchMarkItem";
 
 function Analysis() {
   return (
     <div>
       <div className="title">통합 분석</div>
-      <main>
+      <main className="analysis_Main">
         <div className="analysis_Left">
           <div className="Monthly-usage-summary">
             <SummaryCard title="월" />
@@ -19,9 +20,9 @@ function Analysis() {
               <div className="industry-comparison-container">
                 <div className="industry-comparison-bar"></div>
                 <div className="industry-benchmark-list">
-                  <div className="industry-benchmark-item">상위 5% 평균 <span id="industry_benchmark_value">100,000원</span></div>
-                  <div className="industry-benchmark-item">전체 평균 <span id="industry_benchmark_value">200,000원</span></div>
-                  <div className="industry-benchmark-item">우리 빌딩<span id="industry_benchmark_value">300,000원</span></div>
+                  <BenchMarkItem topic="상위 5% 평균" value="100,000원" />
+                  <BenchMarkItem topic="전체 평균" value="200,000원" />
+                  <BenchMarkItem topic="우리 빌딩" value="300,000원" />
                 </div>
               </div>
             </div>
