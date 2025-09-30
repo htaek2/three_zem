@@ -15,6 +15,17 @@ function Analysis() {
           </div>
           <section className="ranking_distribution">
             <h2>동 업종 대비 저비용 지출 분석</h2>
+            <div className="ranking_distribution_graph">
+              <div className="industry-comparison-container">
+                <div className="industry-comparison-bar"></div>
+                <div className="industry-benchmark-list">
+                  <div className="industry-benchmark-item">상위 5% 평균 <span id="industry_benchmark_value">100,000원</span></div>
+                  <div className="industry-benchmark-item">전체 평균 <span id="industry_benchmark_value">200,000원</span></div>
+                  <div className="industry-benchmark-item">우리 빌딩<span id="industry_benchmark_value">300,000원</span></div>
+                </div>
+              </div>
+            </div>
+            <h3>동 업종 <span id="industry_count">3325</span>개 중 상위 <span id="industry_rate">58%</span><span id="industry_message">평균 오차 범위에 속해요.</span></h3>
           </section>
         </div>
 

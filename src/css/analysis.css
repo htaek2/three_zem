@@ -147,3 +147,68 @@ main > div:nth-child(2) {
   background: rgba(251, 44, 54, 0.3);
   border: 1px solid #fb2c36;
 }
+
+
+.ranking_distribution_graph{
+    width: 100%;
+    height: 160px;
+    margin-top: 18px;
+}
+
+
+.industry-comparison-container{
+    width: 90%;
+    height: 100%;
+    border: 1px solid white;
+    margin: 0 auto;
+    border-radius: 10px;
+    display: flex;
+}
+
+
+.industry-comparison-bar {
+    width: 35%;
+    height: 100%;
+    border: 1px solid #00AA6F;
+}
+.industry-benchmark-list {
+    width: 65%;
+    height: 100%;
+    border: 5px solid #868686;
+}
+
+.industry-benchmark-item {
+    font-size: 22px;
+    color: #FFFFFF;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 800;
+}
+
+#industry_benchmark_value {
+    color : #00AA6F;
+}
+
+.ranking_distribution > h3{
+    font-size: 30px;
+    color: #868686;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 800;
+}
+
+
+
+#industry_count {
+    color: #EF4444;
+}
+
+#industry_rate {
+    color: #FF9924;
+}
+
+#industry_message {
+    color: #FF9924;
+}
