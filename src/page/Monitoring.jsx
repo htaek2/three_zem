@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../css/monitoring.css";
-
+//
 /* 재사용 칩 컴포넌트 */
 function CardChip({ src, alt, label }) {
   return (
